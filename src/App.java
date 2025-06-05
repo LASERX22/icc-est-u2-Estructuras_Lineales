@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 //import Controllers.Queue;
 import Controllers.QueueG;
+import Models.NodeGeneric;
 //import Controllers.Stack;
 //import Controllers.StackG;
 import Models.Persona;
@@ -32,7 +33,7 @@ public class App {
 
         Persona p1=new Persona("Juan");
         Persona p2=new Persona("Maria");
-        Persona p3=new Persona("pedro");
+        Persona p3=new Persona("Pedro");
         Persona p4=new Persona("David");
 
         QueueG<Persona> colaPersonas=new QueueG<Persona>();
@@ -43,12 +44,13 @@ public class App {
         colaPersonas.printCola();
         System.out.println("Persona atendida -> "+colaPersonas.remove());
         colaPersonas.printCola();
-        Persona pB= colaPersonas.findByName("Juan");
-        System.out.println("Persona Encontrada -> "+pB !=null? pB:"Ninguna");
+        NodeGeneric<Persona> pB= colaPersonas.findByName("Juan");
+        System.out.println("Persona Encontrada -> "+(pB !=null? pB:"Ninguna"));//Por recomendacion hay que cerrar los ternarios en parentesis para evitar malinterpretaciones por parte de java
 
 
         Persona pE=colaPersonas.deleteByName("Pedro");
-        System.out.println("Persona eliminada -> "+pE !=null? pE:"Ninguna");
+        System.out.println("Persona eliminada -> "+(pE !=null? pE:"Ninguna"));//Lo mismo aca, al aplicar parentesis ya no compara erroneamente soltandome null, en su lugar mostrara el print como se debe
         colaPersonas.printCola();
+        //Perdon por tantos comentarios, es que estoy aprendiendo jajajaja
     }
 }
